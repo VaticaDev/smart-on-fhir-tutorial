@@ -26,15 +26,13 @@
 
         $.when(pt, obv).fail(onError);
 
-        // $.when(userPromise).done(function(callingUser) {
-        //   var user = callingUser;
-        // });
+        
 
-        $.when(pt, obv, userPromise).done(function(patient, obv, calledUser) {
+        $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
           
-          var u = calledUser;
+          
 
           var fname = '';
           var lname = '';
@@ -69,6 +67,10 @@
           p.ldl = getQuantityValueAndUnit(ldl[0]);
 
           ret.resolve(p);
+        });
+
+        $.when(userPromise).done(function(callingUser) {
+          var myUser = callingUser;
         });
       } else {
         onError();
