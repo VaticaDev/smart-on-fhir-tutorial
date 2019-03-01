@@ -10,8 +10,9 @@
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
+        var user = smart.user;
         var pt = patient.read();
-        var userPromise = smart.user.read();
+        var userPromise = user.read();
         var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
                     query: {
@@ -29,9 +30,11 @@
         //   var user = callingUser;
         // });
 
-        $.when(pt, obv).done(function(patient, obv) {
+        $.when(pt, obv, userPromise).done(function(patient, obv, calledUser) {
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
+          
+          var u = calledUser;
 
           var fname = '';
           var lname = '';
