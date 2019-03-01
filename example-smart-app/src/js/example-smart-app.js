@@ -24,11 +24,11 @@
                     }
                   });
 
-        $.when(pt, obv, userPromise).fail(onError);
+        $.when(pt, obv).fail(onError);
 
         
 
-        $.when(pt, obv).done(function(patient, obv, userPromise) {
+        $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
           
