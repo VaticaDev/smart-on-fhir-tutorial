@@ -10,9 +10,7 @@
     function onReady(smart)  {
       if (smart.hasOwnProperty('patient')) {
         var patient = smart.patient;
-        var user = smart.user;
         var pt = patient.read();
-        var userPromise = user.read();
         var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
                     query: {
@@ -25,10 +23,6 @@
                   });
 
         $.when(pt, obv).fail(onError);
-
-        $.when(userPromise).done(function(aUser) {
-          console.log('made it');
-        });
 
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
@@ -96,12 +90,6 @@
     };
   }
 
-  function defaultUser() {
-    return {
-      userId: {value: ''}
-    };
-  }
-
   function getBloodPressureValue(BPObservations, typeOfPressure) {
     var formattedBPObservations = [];
     BPObservations.forEach(function(observation){
@@ -145,3 +133,7 @@
   };
 
 })(window);
+
+function goToVatica() {
+  console.log('Navigating to Vatica');
+}
