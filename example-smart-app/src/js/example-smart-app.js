@@ -69,9 +69,7 @@
           ret.resolve(p);
         });
 
-        $.when(userPromise).done(function(callingUser) {
-          var myUser = callingUser;
-        });
+
       } else {
         onError();
       }
