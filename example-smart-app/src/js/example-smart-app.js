@@ -26,7 +26,9 @@
 
         $.when(pt, obv).fail(onError);
 
-        
+        $.when(userPromise).done(function(aUser) {
+          console.log('made it');
+        });
 
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
