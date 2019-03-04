@@ -136,5 +136,5 @@
 
 function goToVatica() {
   console.log('Navigating to Vatica');
-  window.location = 'https://vaticaqa.vaticahealth-labs.com/VaticaHealth.Web.UI/#/';
+  window.location = 'http://localhost/VaticaHealth.Web.UI/#/';
 }
